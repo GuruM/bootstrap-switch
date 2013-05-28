@@ -27,13 +27,13 @@
     display: inline-block;
     background-color: red;
     background-image: linear-gradient(to bottom, #e6e6e6, #ffffff);
-    height: 22px;
-    width: 13%;
+    height: 18px;
+    width: 11px;
     padding-top: 1px;
   }
 
   &.switch-mini {
-    min-width: 54px;
+    min-width: 0px;
   }
 
   .toggle-left-half {
@@ -80,17 +80,17 @@
     position: relative;
     top: 0;
 
-    background-image: linear-gradient(to bottom, #0044cc, #0088cc);
+    background-image: linear-gradient(to bottom, #CE571A, #FF8321);
     border-radius: 28px;
 
     &.switch-animate {
       .transition(left 0.5s);
     }
     &.switch-off {
-      left: -61%;
+      left: -33px;
     }
     &.switch-on {
-      left: -2%;
+      left: -3px;
 
       .toggle-left-half {
         border-width: 1px;
@@ -120,7 +120,7 @@
 
     &.switch-mini {
       padding-bottom: 4px;
-      padding-top: 6px;
+      padding-top: 5px;
       font-size: 10px;
       line-height: 9px;
     }
@@ -145,7 +145,7 @@
     margin-top: -1px;
     margin-bottom: -1px;
     z-index: 100;
-    width: 12%;
+    width: 10px;
 
     .buttonBackground(@btnBackground, @btnBackgroundHighlight);
 
@@ -160,22 +160,36 @@
   span {
     text-align: center;
     z-index: 1;
-    width: 33%;
-
-    &.switch-left {
-      border-top-left-radius: 28px;
-      border-bottom-left-radius: 28px;
-      padding-left: 5px;
-    }
+    width: 37%;
 
     &.switch-right {
-      padding-right: 5px;
+      padding-left: 3px;
+      margin-right: -16px;
+      text-align: left;
       .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+
+      &:hover, &:focus, &:disabled {
+        color: #777;
+      }
     }
 
     &.switch-primary, &.switch-left {
       .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground);
     }
+
+    &.switch-left {
+      border-top-left-radius: 28px;
+      border-bottom-left-radius: 28px;
+      padding-left: 6px;
+      margin-left: 0px;
+      background: none;
+
+      &:hover, &:focus, &:disabled {
+        background: none;
+        color: #EEE;
+      }
+    }
+
 
     &.switch-info {
       .buttonBackground(@btnInfoBackgroundHighlight, @btnInfoBackground);
