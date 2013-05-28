@@ -17,7 +17,9 @@
               , $div
               , $switchLeft
               , $switchRight
-              , $label
+              , $labelLeft
+              , $labelRight
+              , $labelRightContainer
               , myClasses = ""
               , classes = $element.attr('class')
               , color
@@ -61,14 +63,25 @@
               .addClass(color)
               .html(offLabel);
 
-            $label = $('<label>')
+            $labelLeft = $('<label>')
               .html("&nbsp;")
               .addClass(myClasses)
+              .addClass('toggle-left-half')
               .attr('for', $element.find('input').attr('id'));
 
-            if (icon) {
-              $label.html('<i class="icon icon-' + icon + '"></i>');
-            }
+            $labelRight = $('<label>')
+              .html("&nbsp;")
+              .addClass(myClasses)
+              .addClass('toggle-right-half')
+              .attr('for', $element.find('input').attr('id'));
+
+            $labelRightContainer = $('<div>')
+              .addClass("toggle-right-half-container")
+              .append($labelRight)
+
+            // if (icon) {
+            //   $label.html('<i class="icon icon-' + icon + '"></i>');
+            // }
 
             $div = $element.find(':checkbox').wrap($('<div>')).parent().data('animated', false);
 
@@ -77,7 +90,8 @@
 
             $div
               .append($switchLeft)
-              .append($label)
+              .append($labelLeft)
+              .append($labelRightContainer)
               .append($switchRight);
 
             $element.find('>div').addClass(

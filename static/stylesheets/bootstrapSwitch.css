@@ -1,5 +1,5 @@
 /* ============================================================
- * bootstrapSwitch v1.2 by Larentis Mattia @spiritualGuru
+ * bootstrapSwitch v1.3 by Larentis Mattia @spiritualGuru
  * http://www.larentis.eu/switch/
  * ============================================================
  * Licensed under the Apache License, Version 2.0
@@ -8,11 +8,9 @@
 .has-switch {
   display: inline-block;
   cursor: pointer;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
   border: 1px solid;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-radius: 28px;
   position: relative;
   text-align: left;
   overflow: hidden;
@@ -24,8 +22,35 @@
   user-select: none;
   min-width: 100px;
 }
+.has-switch .toggle-right-half-container {
+  display: inline-block;
+  background-color: red;
+  background-image: linear-gradient(to bottom, #e6e6e6, #ffffff);
+  height: 22px;
+  width: 13%;
+  padding-top: 1px;
+}
 .has-switch.switch-mini {
-  min-width: 72px;
+  min-width: 54px;
+}
+.has-switch .toggle-left-half {
+  border-left: 0px solid #cccccc;
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
+}
+.has-switch .switch-left {
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
+}
+.has-switch .switch-right {
+  border-top-right-radius: 28px;
+  border-bottom-right-radius: 28px;
+}
+.has-switch .toggle-right-half {
+  border-right: 1px solid #cccccc;
+  border-top-right-radius: 28px;
+  border-bottom-right-radius: 28px;
+  width: 100%;
 }
 .has-switch.switch-small {
   min-width: 80px;
@@ -44,9 +69,11 @@
 }
 .has-switch > div {
   display: inline-block;
-  width: 150%;
+  width: 180%;
   position: relative;
   top: 0;
+  background-image: linear-gradient(to bottom, #0044cc, #0088cc);
+  border-radius: 28px;
 }
 .has-switch > div.switch-animate {
   -webkit-transition: left 0.5s;
@@ -55,10 +82,13 @@
   transition: left 0.5s;
 }
 .has-switch > div.switch-off {
-  left: -50%;
+  left: -61%;
 }
 .has-switch > div.switch-on {
-  left: 0%;
+  left: -2%;
+}
+.has-switch > div.switch-on .toggle-left-half {
+  border-width: 1px;
 }
 .has-switch input[type=checkbox] {
   display: none;
@@ -80,7 +110,7 @@
 .has-switch span.switch-mini,
 .has-switch label.switch-mini {
   padding-bottom: 4px;
-  padding-top: 4px;
+  padding-top: 6px;
   font-size: 10px;
   line-height: 9px;
 }
@@ -103,9 +133,7 @@
   margin-top: -1px;
   margin-bottom: -1px;
   z-index: 100;
-  width: 34%;
-  border-left: 1px solid #cccccc;
-  border-right: 1px solid #cccccc;
+  width: 12%;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #f5f5f5;
@@ -149,14 +177,12 @@
   width: 33%;
 }
 .has-switch span.switch-left {
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
+  padding-left: 5px;
 }
 .has-switch span.switch-right {
+  padding-right: 5px;
   color: #333333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   background-color: #f0f0f0;
