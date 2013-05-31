@@ -113,12 +113,9 @@
               }
             });
 
-            $switchLeft.on('click', function (e) {
-              changeStatus($(this));
-            });
-
-            $switchRight.on('click', function (e) {
-              changeStatus($(this));
+            $element.on('click', function (e) {
+              var $myCheckBox = $(e.target).find('input');
+              $myCheckBox.prop('checked', !$myCheckBox.prop('checked')).trigger('change');
             });
 
             $element.find('input').on('change', function (e, skipOnChange) {
@@ -147,74 +144,54 @@
               }
             });
 
-            $element.find('label').on('mousedown touchstart', function (e) {
-              var $this = $(this);
-              moving = false;
+            // $element.find('label').on('mousedown touchstart', function (e) {
+            //   var $this = $(this);
+            //   moving = false;
 
-              e.preventDefault();
-              e.stopImmediatePropagation();
+            //   e.preventDefault();
+            //   e.stopImmediatePropagation();
 
-              $this.closest('div').removeClass('switch-animate');
+            //   $this.closest('div').removeClass('switch-animate');
 
-              if ($this.closest('.has-switch').is('.deactivate'))
-                $this.unbind('click');
-              else {
-                $this.on('mousemove touchmove', function (e) {
-                  var $element = $(this).closest('.switch')
-                    , relativeX = (e.pageX || e.originalEvent.targetTouches[0].pageX) - $element.offset().left
-                    , percent = (relativeX / $element.width()) * 100
-                    , left = 25
-                    , right = 75;
+            //   if ($this.closest('.has-switch').is('.deactivate'))
+            //     $this.unbind('click');
+            //   else {
+            //     $this.on('click touchend', function (e) {
+            //       var $this = $(this)
+            //         , $target = $(e.target)
+            //         , $myCheckBox = $target.siblings('input');
 
-                  moving = true;
+            //       e.stopImmediatePropagation();
+            //       e.preventDefault();
 
-                  if (percent < left)
-                    percent = left;
-                  else if (percent > right)
-                    percent = right;
+            //       $this.unbind('mouseleave');
 
-                  $element.find('>div').css('left', (percent - right) + "%")
-                });
+            //       if (moving)
+            //         $myCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25));
+            //       else $myCheckBox.prop("checked", !$myCheckBox.is(":checked"));
 
-                $this.on('click touchend', function (e) {
-                  var $this = $(this)
-                    , $target = $(e.target)
-                    , $myCheckBox = $target.siblings('input');
+            //       moving = false;
+            //       $myCheckBox.trigger('change');
+            //     });
 
-                  e.stopImmediatePropagation();
-                  e.preventDefault();
+            //     $this.on('mouseleave', function (e) {
+            //       var $this = $(this)
+            //         , $myCheckBox = $this.siblings('input');
 
-                  $this.unbind('mouseleave');
+            //       e.preventDefault();
+            //       e.stopImmediatePropagation();
 
-                  if (moving)
-                    $myCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25));
-                  else $myCheckBox.prop("checked", !$myCheckBox.is(":checked"));
 
-                  moving = false;
-                  $myCheckBox.trigger('change');
-                });
+            //     });
 
-                $this.on('mouseleave', function (e) {
-                  var $this = $(this)
-                    , $myCheckBox = $this.siblings('input');
+            //     // $this.on('mouseup', function (e) {
+            //     //   e.stopImmediatePropagation();
+            //     //   e.preventDefault();
 
-                  e.preventDefault();
-                  e.stopImmediatePropagation();
-
-                  $this.unbind('mouseleave');
-                  $this.trigger('mouseup');
-
-                  $myCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25)).trigger('change');
-                });
-
-                $this.on('mouseup', function (e) {
-                  e.stopImmediatePropagation();
-                  e.preventDefault();
-
-                  $(this).unbind('mousemove');
-                });
-              }
-            });
+            //     //   $(this).unbind('mousemove');
+            //     // });
+            //   }
+            // });
           }
         );
       },
